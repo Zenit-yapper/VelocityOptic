@@ -14,17 +14,18 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      # We removed the "Validate" step because the JAR is missing
-      
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
-      - name: Build with Gradle
+      - name: Build Mod
+        # We use 'build' but ensure the project is remapped for Minecraft
         run: gradle build
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: VelocityOptic-1.21.11-Jar
-          path: build/libs/*.jar
+          name: VelocityOptic-Mod
+          # This modified path helps GitHub find the jar even if the folder name varies
+          path: "**/build/libs/*.jar"
+          if-no-files-found: error
           
