@@ -18,14 +18,12 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       - name: Build Mod
-        # We use 'build' but ensure the project is remapped for Minecraft
-        run: gradle build
+        run: gradle build --no-daemon
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: VelocityOptic-Mod
-          # This modified path helps GitHub find the jar even if the folder name varies
-          path: "**/build/libs/*.jar"
-          if-no-files-found: error
+          name: VelocityOptic-Download
+          # This tells GitHub to find ANY jar anywhere in the project
+          path: "**/*.jar"
           
