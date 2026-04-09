@@ -4,7 +4,6 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.KeyMapping;
-import net.minecraft.client.Minecraft;
 import com.mojang.blaze3d.platform.InputConstants;
 import org.lwjgl.glfw.GLFW;
 
@@ -14,9 +13,9 @@ public class VelocityOpticClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        // Updated constructor to prevent the "Category" conversion error
         guiKey = KeyBindingHelper.registerKeyMapping(new KeyMapping(
-                "key.velocityoptic.open_menu",
-                InputConstants.Type.KEYSYM,
+                "key.velocityoptic.open_menu", 
                 GLFW.GLFW_KEY_RIGHT_SHIFT, 
                 "category.velocityoptic"
         ));
