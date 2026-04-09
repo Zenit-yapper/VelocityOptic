@@ -15,7 +15,10 @@ jobs:
           distribution: 'temurin'
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          # This is the secret sauce: forcing a stable version
+          gradle-version: '8.10'
 
       - name: Build Mod
         run: gradle build --no-daemon
@@ -24,7 +27,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: VelocityOptic-1.21.11-Build
-          # This path ensures the JAR is found so the URL is generated
-          path: build/libs/*.jar
+          path: "**/build/libs/*.jar"
           if-no-files-found: error
           
