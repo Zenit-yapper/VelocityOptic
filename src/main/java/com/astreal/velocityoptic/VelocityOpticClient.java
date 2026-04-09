@@ -13,12 +13,12 @@ public class VelocityOpticClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        // Updated to use the correct 1.21.11 mapping format
+        // We use a more standard key category used by most mods to ensure compatibility
         guiKey = KeyBindingHelper.registerKeyMapping(new KeyMapping(
                 "key.velocityoptic.open_menu", 
                 InputConstants.Type.KEYSYM,
                 GLFW.GLFW_KEY_RIGHT_SHIFT, 
-                "category.velocityoptic"
+                "key.categories.misc" 
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
