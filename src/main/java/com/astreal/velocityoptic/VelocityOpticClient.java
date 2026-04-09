@@ -13,9 +13,10 @@ public class VelocityOpticClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        // Updated constructor to prevent the "Category" conversion error
+        // Updated to use the correct 1.21.11 mapping format
         guiKey = KeyBindingHelper.registerKeyMapping(new KeyMapping(
                 "key.velocityoptic.open_menu", 
+                InputConstants.Type.KEYSYM,
                 GLFW.GLFW_KEY_RIGHT_SHIFT, 
                 "category.velocityoptic"
         ));
